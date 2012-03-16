@@ -1,3 +1,14 @@
+$(document).ready( function() {
+    $('#add_new').click( function() {
+        $('#new_form').slideToggle("slow");
+    });
+    $('#imp_new').click( function() {
+        $('#import_form').slideToggle("slow");
+    });
+    //
+});
+
+
 // Facebox render
 jQuery(document).ready( function($) {
     $('a[rel*=facebox]').facebox({

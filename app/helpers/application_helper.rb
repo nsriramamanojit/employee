@@ -46,4 +46,8 @@ module ApplicationHelper
   def javascript(*args)
     content_for(:head) { javascript_include_tag(*args) }
   end
+  def link_to_all(path)
+    link_to content_tag(:span, "Back To List &rarr;".html_safe), path, :class => 'btn-yellow'
+  end
+
 end
