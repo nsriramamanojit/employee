@@ -1,0 +1,18 @@
+<div id="page_top">
+  <%= link_to image_tag("logo.png", :border => 0), homes_url %>
+  <div id="top_menu">
+    <div id="top_m">
+      <ul class="top_menu">
+        <li>Welcome-
+          <%= current_user.name %>
+        </li>
+        <li><%= link_to 'Home', homes_url %></li>
+        <li><%= link_to 'Profile', "#" %></li>
+        <li>
+          <a href="?locale=hi">हिंदी</a> | <a href="?locale=en">English</a>
+        </li>
+        <li><%= link_to "Sign out", logout_path %></li>
+      </ul>
+    </div>
+  </div>
+</div>
