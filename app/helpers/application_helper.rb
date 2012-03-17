@@ -49,5 +49,26 @@ module ApplicationHelper
   def link_to_all(path)
     link_to content_tag(:span, "Back To List &rarr;".html_safe), path, :class => 'btn-yellow'
   end
+  def users_list(users)
+    return 'No Users found' if users.blank?
+    content = ''
+    i = 1
+    for user in users[0..15]
+      content << "#{i}. " + user.name + "<br/>"
+      i += 1
+    end
+    content << 'and more' if users.size > 16
+    content.html_safe
+  end
+  def associated_names(records)
+    return 'No Records found' if records.blank?
+    content = ''
+    i = 1
+    for record in records
+      content << "#{i}. " + record.name + "<br/>"
+      i += 1
+    end
+    content.html_safe
+  end
 
 end

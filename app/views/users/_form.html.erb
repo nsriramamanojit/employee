@@ -8,8 +8,6 @@
         <%= f.error_messages %>
         <%= f.input :name, :label=>"Full Name", :placeholder=>"Full Name" %>
         <%= f.input :email, :label=>"Email",:placeholder=>"user@example.com"%>
-        <%= f.input :password, :label=>"Password"%>
-        <%= f.input :password_confirmation, :label=>"Password Confirmation"%>
         <%= f.input :father_name, :label=>"Father Name",:placeholder=>"Father Name" %>
         <%= f.input :gender, :collection => [:Male, :Female],:prompt=>"Select Gender" %>
         <%= f.input :dob, :label=>"DOB", :as => :date, :start_year => Date.today.year,
@@ -22,7 +20,7 @@
         <%= f.input :mobile_number, :label=>"Mobile", :placeholder=>"Mobile Number Must be 10 Digits" %>
         <%= f.input :phone_number, :label=>"Land Phone",:placeholder=>"Phone Number" %>
 
-        <%# f.association :roles %>
+        <%= f.association :roles %>
         <%= f.submit 'Save', :disable_with=>'Please wait...' %>
       </fieldset>
   <% end %>

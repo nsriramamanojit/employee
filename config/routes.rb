@@ -1,4 +1,8 @@
 Employee::Application.routes.draw do
+  resources :districts
+
+  resources :states
+
   resources :roles
 
   resources :users

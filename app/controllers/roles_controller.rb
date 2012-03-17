@@ -1,7 +1,11 @@
 class RolesController < ApplicationController
+  layout "application", :except => [:show, :edit]
+  before_filter  :require_user,:recent_items
+  filter_access_to :all
+
   def index
     @roles = Role.search(params[:search])
-    @role = Role.new
+
   end
 
   def show
@@ -45,7 +49,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.update_attributes(params[:role])
-        format.html { redirect_to(@role, :notice => 'Role was successfully updated.') }
+        format.html { redirect_to(roles_url, :notice => 'Role was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -62,5 +66,9 @@ class RolesController < ApplicationController
       format.html { redirect_to(roles_url) }
       format.xml  { head :ok }
     end
+  end
+  private
+  def recent_items
+    @recent = Role.recent
   end
 end

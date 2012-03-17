@@ -1,0 +1,55 @@
+<% title "VEDAVAAG | States" %>
+<h3>VEDAVAAG | States | Manage States</h3>
+<% content_for :left_panel do %>
+    <td valign="top" width="250"> <%= render 'common/search' %>
+      <%= render 'recent' %> </td>
+<% end %>
+<div class="help_text">
+  Area for managing States. <br/>
+  Along with creating, managing  States for Application.
+</div>
+<%#link_to ((t :create_new) + ' ' + (t :states) ), "#", :class=>'usuallink bold_text', :id=>'add_new' %>
+<div class="link_buttons">
+  <%= link_to content_tag(:span, 'New State'), new_state_path, :class => 'btn-blue' if permitted_to? :create %>
+  <%# link_to content_tag(:span, 'Export'), export_states_path, :class => 'btn-yellow' %>
+  <%= link_to content_tag(:span, 'Home'), homes_url, :class => 'btn-yellow' %>
+</div>
+<!--
+<div id="new_form">
+  <%#render 'form' %>
+</div>
+-->
+<% if @states.blank? %>
+    <div class="error_msg">
+      OOPS!.. No States are Found in the System..!
+    </div>
+<% else %>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>SNo</th>
+        <th>Name</th>
+        <th>Districts</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% i=1 %>
+      <% @states.each do |state| %>
+          <tr>
+            <td><%= i %></td>
+            <td><%= highlight(state.name.titleize,params[:search]) %></td>
+            <td><%= link_to state.districts.size, districts_path, :class => 'tipTipRight', :title => associated_names(state.districts) %></td>
+            <td>
+              <%= link_for_show_pop(state) %>
+            </td>
+          </tr>
+          <% i = i + 1 %>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>
+
+
+
+

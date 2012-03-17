@@ -1,0 +1,62 @@
+<% title "SECC | Districts" %>
+<h3>VEDAVAAG | Districts | Manage Districts</h3>
+<% content_for :left_panel do %>
+    <td valign="top" width="250"> <%= render 'common/search' %>
+      <%= render 'recent' %> </td>
+<% end %>
+<div class="help_text">
+  Area for managing District. <br/>
+  Along with creating, managing Districts for Application.
+</div>
+<div class="link_buttons">
+  <%= link_to content_tag(:span, 'New District'), new_district_path, :class => 'btn-blue' if permitted_to? :create %>
+  <%# link_to content_tag(:span, 'Export'), export_districts_path, :class => 'btn-yellow' %>
+  <%= link_to content_tag(:span, 'Home'), homes_url, :class => 'btn-yellow' %>
+</div>
+<% if @districts.blank? %>
+    <div class="error_msg">
+      OOPS!.. No Districts are Found in the System..!
+    </div>
+<% else %>
+    <table width="100%">
+      <tr>
+        <td align="right">
+          <b><i>per page</i></b>
+          <%= per_page %>| <%= page_entries_info @districts %>
+        </td>
+      </tr>
+    </table>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>SNo</th>
+        <th>Name</th>
+        <th>State</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% i=1 %>
+      <% @districts.each do |district| %>
+          <tr>
+            <td><%= i %></td>
+            <td><%= highlight(district.name, params[:search]) %></td>
+            <td><%= highlight(district.state.name,params[:search]) %></td>
+            <td>
+              <%= link_for_show_pop(district) %>
+            </td>
+          </tr>
+          <% i = i + 1 %>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="flickr_pagination">
+      <%= page_entries_info @districts %> <%= will_paginate @districts, :container => false %>
+    </div>
+<% end %>
+
+
+
+
+
+

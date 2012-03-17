@@ -1,0 +1,14 @@
+<div class="form-container">
+  <p class="legend">
+    <strong>Note:</strong>
+    Required fields are marked with an asterisk (<em>*</em>)
+  </p>
+  <%= simple_form_for(@district, :validate => true) do |f| %>
+      <fieldset>
+        <%= f.input :name %>
+        <%= f.association :state,:prompt => "Select State",:label=>"Select State" %>
+        <%= f.input :description %>
+        <%= f.submit 'Save', :disable_with=>'Please wait...' %>
+      </fieldset>
+  <% end %>
+</div>

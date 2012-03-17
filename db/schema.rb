@@ -11,9 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120316114517) do
+ActiveRecord::Schema.define(:version => 20120317061738) do
 
   create_table "assignments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.integer  "created_by"
+    t.integer  "updated_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "districts", :force => true do |t|
+    t.string   "name",                               :null => false
+    t.integer  "state_id"
+    t.integer  "division_id"
+    t.string   "description"
+    t.integer  "reference_number"
+    t.string   "reference_name"
+    t.boolean  "status",           :default => true
+    t.integer  "created_by"
+    t.integer  "modified_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -23,6 +41,18 @@ ActiveRecord::Schema.define(:version => 20120316114517) do
     t.string   "description"
     t.string   "short_name"
     t.boolean  "status",      :default => true
+    t.integer  "created_by"
+    t.integer  "modified_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "states", :force => true do |t|
+    t.string   "name",                               :null => false
+    t.string   "description"
+    t.integer  "reference_number"
+    t.string   "reference_name"
+    t.boolean  "status",           :default => true
     t.integer  "created_by"
     t.integer  "modified_by"
     t.datetime "created_at"
