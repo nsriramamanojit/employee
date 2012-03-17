@@ -7,7 +7,7 @@
           <%= current_user.name %>
         </li>
         <li><%= link_to 'Home', homes_url %></li>
-        <li><%= link_to 'Profile', "#" %></li>
+        <li><%= link_to 'Profile', profile_user_path(current_user.id) %></li>
         <li>
           <a href="?locale=hi">हिंदी</a> | <a href="?locale=en">English</a>
         </li>

@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
     c.validate_password_field= false
   end
 
+
+
   validates :name, :presence => true, :length => {:maximum => 100}
   validates :mobile_number, :presence => true, :length => {:maximum => 10}
   validates :email,:presence => true,:uniqueness => true
@@ -11,6 +13,8 @@ class User < ActiveRecord::Base
   #Relations
   has_many :assignments
   has_many :roles, :through => :assignments
+  belongs_to :state
+  belongs_to :district
 
   #Roles
   def role_symbols

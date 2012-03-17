@@ -72,6 +72,45 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  def profile
+    @user = User.find(params[:id])
+  end
+  def update_profile
+    @user = User.find(params[:id])
+  end
+  def profile_update
+    @user = current_user
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to(profile_user_path(current_user), :notice => 'Profile Updated Successfully.') }
+        format.xml { head :ok }
+      else
+        format.html { render :action => "profile_update" }
+        format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  def change_password
+    @user = current_user
+
+  end
+  def password_change
+    @user = current_user
+    return flash.now[:error] = "Old password is Wrong" unless @user.valid_password? params[:old_password]
+    if ((params[:password] == params[:password_confirmation]) && !params[:password_confirmation].blank?)
+      @user.password = params[:password]
+      if @user.save
+        flash.now[:notice] = "Password Changed Successfully."
+        #redirect_to profile_user_path(current_user)
+      else
+        flash.now[:error]= "Password not changed"
+      end
+    else
+      flash.now[:error] = "New Password mismatch"
+      @old_password = params[:old_password]
+    end
+  end
+  ###################################################
   private
   def recent_items
     @recent = User.recent

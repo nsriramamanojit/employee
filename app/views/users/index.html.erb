@@ -1,5 +1,5 @@
 <% title "VEDAVAAG | Users" %>
-<h3>Users | Manage | Users</h3>
+<h3>VEDAAAG | Users | Manage Users</h3>
 
 <% content_for :left_panel do %>
     <td valign="top" width="250"> <%= render 'common/search' %>
@@ -36,6 +36,8 @@
         <th>State</th>
         <th>District</th>
         <th>Mobile</th>
+        <th>Role</th>
+
         <th>Actions</th>
       </tr>
       </thead>
@@ -48,12 +50,13 @@
             <td><%= user.email %></td>
 
             <td>
-              <%# user.user_profile.blank? ? 'N.A' : (user.user_profile.state_id? ? user.user_profile.state.name + " (" + user.user_profile.state.reference_number.to_s + ")" : 'N.A') %>
+              <%= user.state_id? ? user.state.name  : 'N.A' %>
             </td>
             <td>
-              <%# user.user_profile.blank? ? 'N.A' : (user.user_profile.district_id? ? user.user_profile.district.name + " (" + "%02d"%user.user_profile.district.reference_number.to_s + ")" : 'N.A') %>
+              <%= user.district_id? ? user.district.name  : 'N.A'%>
             </td>
             <td><%= user.mobile_number %></td>
+            <td><%= get_role(user) %></td>
             <td>
               <%= link_for_show_pop(user) %>
             </td>

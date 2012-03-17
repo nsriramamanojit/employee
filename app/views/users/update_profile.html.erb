@@ -3,11 +3,11 @@
     <strong>Note:</strong>
     Required fields are marked with an asterisk (<em>*</em>)
   </p>
-  <%= simple_form_for(@user, :validate => true) do |f| %>
+  <%= simple_form_for(@user, :validate => true,:url=>url_for(:action=>:profile_update)) do |f| %>
       <fieldset>
         <%= f.error_messages %>
-        <%= f.input :name, :label=>"Full Name", :placeholder=>"Full Name" %>
-        <%= f.input :email, :label=>"Email",:placeholder=>"user@example.com"%>
+        <%= f.input :email,:label=>"Email", :disabled => true%>
+        <%= f.input :name, :label=>"Name", :placeholder=>"Full Name" %>
         <%= f.input :father_name, :label=>"Father Name",:placeholder=>"Father Name" %>
         <%= f.input :gender, :collection => [:Male, :Female],:prompt=>"Select Gender" %>
         <%= f.input :dob, :label=>"DOB", :as => :date, :start_year => Date.today.year,
@@ -19,11 +19,11 @@
         <%= f.input :pin, :label=>"PIN", :placeholder=>"PIN code Must be 6 Digits" %>
         <%= f.input :mobile_number, :label=>"Mobile", :placeholder=>"Mobile Number Must be 10 Digits" %>
         <%= f.input :phone_number, :label=>"Land Phone",:placeholder=>"Phone Number" %>
-
-        <%= f.association :state, :prompt=>"Select State"%>
-        <%= f.association :district,:collection => District.all(:order => 'name'), :prompt => "Select District"%>
-        <%= f.association :roles,:label_method => lambda { |role| "#{role.name.titleize} " } %>
-        <%= f.submit 'Save', :disable_with=>'Please wait...' %>
+        <%= f.submit 'Update Profile', :disable_with=>'Please wait...' %>
       </fieldset>
   <% end %>
+  <br/>
+  <%= link_to content_tag(:span, 'Back to Profile'), profile_user_path(current_user), :class => 'btn-blue' %>
+  <%= link_to content_tag(:span, 'Change Password'), change_password_user_path(current_user), :class => 'btn-blue' %>
+  <br/>
 </div>

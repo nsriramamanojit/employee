@@ -5,7 +5,13 @@ Employee::Application.routes.draw do
 
   resources :roles
 
-  resources :users
+  resources :users do
+    get :profile, :on=>:member
+    get :update_profile,:on=>:member
+    put :profile_update,:on=>:member
+    get :change_password,:on=>:member
+  end
+
   resources :user_sessions
   resources :homes
 
@@ -15,5 +21,5 @@ Employee::Application.routes.draw do
 
 
   # root :to => "welcome#index"
-  # match ':controller(/:action(/:id(.:format)))'
+  match ':controller(/:action(/:id(.:format)))'
 end
