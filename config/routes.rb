@@ -10,6 +10,7 @@ Employee::Application.routes.draw do
     get :update_profile,:on=>:member
     put :profile_update,:on=>:member
     get :change_password,:on=>:member
+    #put :password_change,:on=>:member
   end
 
   resources :user_sessions

@@ -96,8 +96,8 @@ class UsersController < ApplicationController
   end
   def password_change
     @user = current_user
-    return flash.now[:error] = "Old password is Wrong" unless @user.valid_password? params[:old_password]
-    if ((params[:password] == params[:password_confirmation]) && !params[:password_confirmation].blank?)
+    return flash.now[:error] = "Current password is Wrong/Blank" unless @user.valid_password? params[:old_password]
+    if params[:password] == params[:password_confirmation] && !params[:password_confirmation].blank?
       @user.password = params[:password]
       if @user.save
         flash.now[:notice] = "Password Changed Successfully."
