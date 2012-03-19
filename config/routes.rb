@@ -10,6 +10,9 @@ Employee::Application.routes.draw do
     get :update_profile,:on=>:member
     put :profile_update,:on=>:member
     get :change_password,:on=>:member
+    put :import,:on=>:collection
+    get :upload,:on=>:collection
+
     #put :password_change,:on=>:member
   end
 

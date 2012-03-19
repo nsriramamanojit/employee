@@ -4,20 +4,22 @@ Role.create(:name => "manager", :short_name => "ma", :description => "Manager", 
 Role.create(:name => "employee", :short_name => "sc", :description => "Employee", :created_at => Time.now, :created_by => 1)
 #################
 session = User.create do |u|
-  u.name = "Chaitanya Ram N"
+  u.name = "Mr. Chaitanya Ram N"
   u.email = 'chaitanya@vedavaag.com'
-  u.password = 'admin123'
+  u.password = 'chaitu1479'
   u.address1= 'Hyderabad'
   u.mobile_number=9666138888
   Assignment.create(:user_id => 1, :role_id => 1, :created_at => Time.now, :updated_at => Time.now)
 end
 session.save
 session = User.create do |u|
-  u.name = "Ch Vish"
+  u.name = "Mr.Viswewar Ruddu"
   u.email = 'chittav@rediffmail.com'
-  u.password = 'admin123'
-  u.address1= 'Hyderabad'
-  u.mobile_number=9666138888
+  u.password = 'chittav9976'
+  u.address1= 'Patna'
+  u.mobile_number=9386849976
+  u.district_id =23
+  u.state_id = 1
   Assignment.create(:user_id => 2, :role_id => 2, :created_at => Time.now, :updated_at => Time.now)
 end
 session.save
@@ -31,7 +33,7 @@ District.create(:name=>'Darbhanga',:state_id=>1,:created_by=>1,:created_at=>Time
 District.create(:name=>'Madhubani',:state_id=>1,:created_by=>1,:created_at=>Time.now)
 District.create(:name=>'Samastipur',:state_id=>1,:created_by=>1,:created_at=>Time.now)
 District.create(:name=>'Madhepura',:state_id=>1,:created_by=>1,:created_at=>Time.now)
-District.create(:name=>'Saharsa',:state_id=>1,:created_by=>1,:created_at=>Time.now)
+District.create(:name=>'Saharsha',:state_id=>1,:created_by=>1,:created_at=>Time.now)
 District.create(:name=>'Supaul',:state_id=>1,:created_by=>1,:created_at=>Time.now)
 District.create(:name=>'Arwal',:state_id=>1,:created_by=>1,:created_at=>Time.now)
 District.create(:name=>'Aurangabad',:state_id=>1,:created_by=>1,:created_at=>Time.now)
@@ -54,7 +56,7 @@ District.create(:name=>'Katihar',:state_id=>1,:created_by=>1,:created_at=>Time.n
 District.create(:name=>'Kishanganj',:state_id=>1,:created_by=>1,:created_at=>Time.now)
 District.create(:name=>'Purnia',:state_id=>1,:created_by=>1,:created_at=>Time.now)
 District.create(:name=>'Gopalganj',:state_id=>1,:created_by=>1,:created_at=>Time.now)
-District.create(:name=>'Chapra',:state_id=>1,:created_by=>1,:created_at=>Time.now)
+District.create(:name=>'Chhapra',:state_id=>1,:created_by=>1,:created_at=>Time.now)
 District.create(:name=>'Siwan',:state_id=>1,:created_by=>1,:created_at=>Time.now)
 District.create(:name=>'East Champaran',:state_id=>1,:created_by=>1,:created_at=>Time.now)
 District.create(:name=>'Muzaffarpur',:state_id=>1,:created_by=>1,:created_at=>Time.now)
