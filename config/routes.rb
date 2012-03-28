@@ -1,4 +1,9 @@
 Employee::Application.routes.draw do
+  resources :reports  do
+    get :date_report, :on=>:member
+  end
+
+
   resources :districts
 
   resources :states

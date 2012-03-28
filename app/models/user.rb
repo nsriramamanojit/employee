@@ -5,16 +5,17 @@ class User < ActiveRecord::Base
   end
 
 
-
   validates :name, :presence => true, :length => {:maximum => 100}
   validates :mobile_number, :presence => true, :length => {:maximum => 10}
-  validates :email,:presence => true,:uniqueness => true
+  validates :email, :presence => true, :uniqueness => true
 
   #Relations
   has_many :assignments
   has_many :roles, :through => :assignments
   belongs_to :state
   belongs_to :district
+
+  has_many :reports
 
   #Roles
   def role_symbols
@@ -28,6 +29,7 @@ class User < ActiveRecord::Base
     def recent
       order('id DESC').limit(4)
     end
+
     def search(query)
       if query
         where(:name.matches => "%#{query}%") #from meta_where gem

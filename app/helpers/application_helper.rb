@@ -78,8 +78,14 @@ module ApplicationHelper
       content <<  "<br/>"
     end
     content.html_safe
-
-
   end
-
+  def get_list_users(records)
+     content = ""
+     i = 1
+     for record in records
+      content << "#{i}. " + record.user.name + "<br/>"
+       i +=1
+    end
+      content.html_safe
+  end
 end

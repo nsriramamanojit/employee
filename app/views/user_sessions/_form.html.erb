@@ -11,7 +11,7 @@
 
 <div class="tabless">
   <div style="position: relative; left: 0px; top: 0px;" class="standalone" id="standalone">
-    <%= render :partial=>'/import_flash' %>
+    <%= render :partial=>'common/flash_message' %>
     <%= form_for @user_session, :url =>{:action => "create"} do |f| %>
         <div class="title">
           Welcome to VEDAVAAG
