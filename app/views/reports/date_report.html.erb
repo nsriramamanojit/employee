@@ -1,0 +1,54 @@
+<% title "VEDAVAAG | Report" %>
+<h3>VEDAVAAG | Reports | EOD Report | <%=  params[:id].to_date.strftime("%d-%b-%Y") %></h3>
+<div class="help_text">
+  Area for EOD Reports. <br/>
+</div>
+<div class="link_buttons">
+  <%= link_to content_tag(:span, 'Home'), homes_url, :class => 'btn-yellow' %>
+</div>
+
+<% if @reports.blank? %>
+    <div class="error_msg">
+      OOPS!.. No Reports are Found in the System..!
+    </div>
+<% else %>
+    <table width="100%">
+      <tr>
+        <td align="right">
+          <b><i>per page</i></b>
+          <%= per_page %>| <%= page_entries_info @reports %>
+        </td>
+      </tr>
+    </table>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Summary</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% i=1 %>
+      <% @reports.each do |report| %>
+          <tr>
+            <td><%= i %></td>
+            <td><%= report.user.name %></td>
+            <td><%= report.report %></td>
+            <td>
+              <%= link_to "View",report,:class => 'usuallink bold_text', :rel => "facebox" %>
+            </td>
+          </tr>
+          <% i = i + 1 %>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="flickr_pagination">
+      <%= page_entries_info @reports %> <%= will_paginate @reports, :container => false %>
+    </div>
+<% end %>
+
+
+
+

@@ -1,0 +1,25 @@
+<% title "VEDAVAAG | Report " %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('VEDAVAAG | Report','Update EOD Report') %>
+<% end %>
+
+<div class="form-container">
+  <p class="legend">
+    <strong>Note:</strong>
+    Required fields are marked with an asterisk (<em>*</em>)
+  </p>
+  <%= simple_form_for(@report, :validate => true) do |f| %>
+      <fieldset>
+        <%= f.input :date, :as => :hidden %>
+        <%= f.input :report, :placeholder=>"Enter EOD Report Summary",:input_html => { :cols => 50, :rows => 3 },:label=>"Enter EOD Report"%>
+        <%= f.input :user_id,:as=>:hidden,:input_html=>{:value=>current_user.id} %>
+
+        <%= f.submit 'Update Report', :disable_with=>'Please wait...' %>
+      </fieldset>
+  <% end %>
+</div>
+
+<div class="link_buttons">
+  <%=link_to_all(reports_path)%>
+</div>
+

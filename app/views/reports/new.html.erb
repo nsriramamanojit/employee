@@ -1,0 +1,9 @@
+<% title "VEDAVAAG | Report " %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('VEDAVAAG | Report','Create EOD Report') %>
+<% end %>
+
+<%= render 'form',:heading => 'Create New Reports' %>
+<div class="link_buttons">
+  <%=link_to_all(reports_path)%>
+</div>

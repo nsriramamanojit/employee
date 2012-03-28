@@ -1,0 +1,19 @@
+<% title "SECC | Districts" %>
+<div id="page_container">
+  <div id="page_content">
+    <div class="content">
+      <h3>Report | View EOD Report</h3>
+
+      <table width="100%" border=0 cellspacing=1 cellpadding=3 class="listTable">
+        <tr>
+          <th width="20%">Date</th>
+          <td><%= @report.date.strftime("%d-%b-%Y") %></td>
+        </tr>
+        <tr>
+          <th width="20%">Report</th>
+          <td><%= @report.report %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
