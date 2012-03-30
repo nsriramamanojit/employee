@@ -17,8 +17,8 @@ Employee::Application.routes.draw do
     get :change_password,:on=>:member
     put :import,:on=>:collection
     get :upload,:on=>:collection
-
-    #put :password_change,:on=>:member
+    get :approve, :on=>:member
+    get :reset, :on=>:member
   end
 
   resources :user_sessions

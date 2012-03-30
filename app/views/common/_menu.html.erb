@@ -1,11 +1,11 @@
 <ul class="page_menu">
-    <li><%= tab_heading 'Dashboard' %>
+    <li><%= tab_heading 'Dashboard' if has_any_role?(:admin,:manager) %>
     <ul>
       <li>
-        <%= link_to 'Roles', roles_path,:class=>"tipTip1",:title=>"Manage Roles" %>
+        <%= link_to 'Users', users_path,:class=>"tipTip1",:title=>"Manage Users" %>
       </li>
       <li>
-        <%= link_to 'Users', users_path,:class=>"tipTip1",:title=>"Manage Users" %>
+        <%= link_to 'Roles', roles_path,:class=>"tipTip1",:title=>"Manage Roles" %>
       </li>
       <li>
         <%= link_to 'States', states_path,:class=>"tipTip1",:title=>"Manage States" %>
@@ -19,7 +19,7 @@
   <li><%= tab_heading 'Reports' %>
     <ul>
       <li>
-        <%= link_to 'Manage Reports', reports_path,:class=>"tipTip1",:title=>"Manage Roles" %>
+        <%= link_to 'Manage Reports', reports_path,:class=>"tipTip1",:title=>"Manage EOD Reports" %>
       </li>
     </ul>
   </li>

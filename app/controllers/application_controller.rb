@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
       return true
     elsif current_user and !current_user.status?
       store_location
-      flash[:warning] = "Your account not yet approved."
+      flash[:alert] = "Your account not yet approved / Deactivated."
       redirect_to new_user_session_url
       return false
     else

@@ -1,15 +1,15 @@
-<% title "VEDAVAAG | Report" %>
-<h3>VEDAVAAG | Report | Manage EOD Reports</h3>
+<% title "VEDAVAAG | ERS | EOD Reports" %>
+<h3>VEDAVAAG | ERS | Manage EOD Reports</h3>
 <% content_for :left_panel do %>
     <td valign="top" width="250"> <%= render 'common/search' %>
       <%= render 'recent' %> </td>
 <% end %>
-<div class="help_text">
-  Area for managing EOD Reports. <br/>
-  Along with creating, managing Reports for Application.
+<div class="help_text_caution">
+ * Employee can create report for current day and previous day only.<br/>
+ * Only One EOD Report is submitted for current day. Employee can update their reports after submitting the reports.<br/>
 </div>
 <div class="link_buttons">
-  <%= link_to content_tag(:span, 'New Report'), new_report_path, :class => 'btn-blue' %>
+  <%= link_to content_tag(:span, 'New Report'), new_report_path, :class => 'btn-blue' if permitted_to?(:create) %>
   <%= link_to content_tag(:span, 'Home'), homes_url, :class => 'btn-yellow' %>
 </div>
 <% if @reports.blank? %>
@@ -29,8 +29,14 @@
       <thead>
       <tr>
         <th>#</th>
+        <% if has_any_role?(:admin, :manager) %>
+
+            <th>Employee</th>
+        <% end %>
         <th>Date</th>
         <th>Summary</th>
+        <th>Created On</th>
+        <th>Updated On</th>
         <th>Actions</th>
       </tr>
       </thead>
@@ -39,11 +45,16 @@
       <% @reports.each do |report| %>
           <tr>
             <td><%= i %></td>
+            <% if has_any_role?(:admin, :manager) %>
+                <td><%= report.user.name %></td>
+            <% end %>
             <td><%= report.date.strftime("%d-%b-%Y") %></td>
-            <td><%= report.report %></td>
+            <td align="left "><%= report.report.truncate(25) %></td>
+            <td><%= report.created_at? ? report.created_at.strftime("%d-%b-%Y") : "-" %></td>
+            <td><%= report.updated_at? ? report.updated_at.strftime("%d-%b-%Y") : "-" %></td>
             <td>
-              <%= link_to "View",report,:class => 'usuallink bold_text', :rel => "facebox" %>  |
-              <%= link_to "Update",edit_report_path(report),:class => 'usuallink bold_text' %>
+              <%= link_for_show_pop(report) %>
+              <%= link_for_edit(edit_report_path(report)) if permitted_to?(:update) %>
             </td>
           </tr>
           <% i = i + 1 %>
@@ -53,7 +64,6 @@
     <div class="flickr_pagination">
       <%= page_entries_info @reports %> <%= will_paginate @reports, :container => false %>
     </div>
-
 <% end %>
 
 

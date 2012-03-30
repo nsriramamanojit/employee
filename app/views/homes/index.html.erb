@@ -1,6 +1,6 @@
 <% title "SECC | Home" %>
 <% if has_any_role?(:admin,:manager) %>
-<h3>VEDAVAAG | Reports | Consolidated EOD Report</h3>
+<h3>VEDAVAAG | ERS | Consolidated EOD Report</h3>
 
 <% if @reports.blank? %>
     <div class="error_msg">
@@ -12,17 +12,19 @@
       <tr>
         <th>#</th>
         <th>Date</th>
-        <th>EOD Count</th>
+        <th>EOD Submit</th>
+        <th>EOD Not Submit</th>
         <th>Actions</th>
       </tr>
       </thead>
       <tbody>
       <% i=1 %>
-      <% @reports.group_by{|r| r.date}.each do |date,records| %>
+      <% @reports.group_by{|r| r.date}.sort.reverse.each do |date,records| %>
           <tr>
             <td><%= i %></td>
             <td><%= date.strftime("%d-%b-%Y")%></td>
             <td><%= link_to records.size, "#",:class => 'bold_text tipTipRight',:title => get_list_users(records) %></td>
+            <td><%= link_to (User.employee_users.size - records.size), "#",:class => 'bold_text tipTipRight'%></td>
             <td><%= link_to "View Reports", date_report_report_path(date),:class => "usuallink bold_text" %></td>
           </tr>
           <% i = i + 1 %>
@@ -30,8 +32,10 @@
       </tbody>
     </table>
 <% end %>
+<%elsif has_any_role?(:employee)%>
+<h3>VEDAVAAG | ERS | Welcome to Employee Report System</h3>
+<%end %>
 
-<%end%>
 
 
 

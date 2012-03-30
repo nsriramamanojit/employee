@@ -1,6 +1,8 @@
-<h1>Editing user</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<% title "VEDAVAAG | Users " %>
+<% content_for :sub_heading do %>
+    <%= sub_heading('VEDAVAAG | Users','Update User') %>
+<% end %>
+<%= render 'form',:heading => 'Update User' %>
+<div class="link_buttons">
+  <%=link_to_all(users_path)%>
+</div>

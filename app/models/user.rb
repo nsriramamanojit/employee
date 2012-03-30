@@ -32,10 +32,13 @@ class User < ActiveRecord::Base
 
     def search(query)
       if query
-        where(:name.matches => "%#{query}%") #from meta_where gem
+        where({:name.matches => "%#{query}%"} | {:mobile_number.matches => "%#{query}%"} | {:email.matches => "%#{query}%"}) #from meta_where gem
       else
         scoped
       end
+    end
+    def employee_users
+      joins([:roles]).where(:roles => {:name => %w(employee)})
     end
   end
 

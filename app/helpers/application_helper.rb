@@ -4,11 +4,14 @@ module ApplicationHelper
   end
 
   def link_for_edit(path)
-    link_to image_tag('/images/icons/edit.png'), path, :title => 'Edit', :class => 'tipTip', :border => 0
+    link_to image_tag('/images/icons/edit.png'), path, :title => 'Update', :class => 'tipTip', :border => 0
   end
 
   def link_for_show(path)
     link_to image_tag('/images/icons/show.png'), path, :title => 'View', :class => 'tipTipTop', :border => 0
+  end
+  def link_for_reset(path)
+    link_to image_tag('/images/icons/passwordreset.png'), path, :title => 'Reset', :class => 'tipTipTop', :border => 0
   end
 
   def link_for_show_pop(path)
@@ -52,10 +55,10 @@ module ApplicationHelper
   def users_list(users)
     return 'No Users found' if users.blank?
     content = ''
-    i = 1
+    j = 1
     for user in users[0..15]
-      content << "#{i}. " + user.name + "<br/>"
-      i += 1
+      content << "#{j}. " + user.name + "<br/>"
+      j += 1
     end
     content << 'and more' if users.size > 16
     content.html_safe
@@ -80,12 +83,22 @@ module ApplicationHelper
     content.html_safe
   end
   def get_list_users(records)
-     content = ""
+    return 'No Users found' if records.blank?
+    content = ""
      i = 1
-     for record in records
+     for record in records[0..15]
       content << "#{i}. " + record.user.name + "<br/>"
        i +=1
-    end
-      content.html_safe
+     end
+     content << 'and more' if records.size > 16
+     content.html_safe
   end
+  def link_to_active(model, path)
+    content = ''
+    content << "<div id='status_#{model.id}'>"
+    content << link_to(model.status ? image_tag('tick.gif') : image_tag('cros.gif'), path, :remote=>true)
+    content << "</div>"
+    content.html_safe
+  end
+
 end

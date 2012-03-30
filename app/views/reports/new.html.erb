@@ -1,7 +1,11 @@
-<% title "VEDAVAAG | Report " %>
+<% title "VEDAVAAG | ERS | EOD Report " %>
 <% content_for :sub_heading do %>
-    <%= sub_heading('VEDAVAAG | Report','Create EOD Report') %>
+    <%= sub_heading('VEDAVAAG | ERS','Create EOD Report') %>
 <% end %>
+<div class="help_text_caution">
+  * Employee can create report for current day and previous day only.<br/>
+  * Only One EOD Report is submitted for current day. Employee can update their reports after submitting the reports.<br/>
+</div>
 
 <%= render 'form',:heading => 'Create New Reports' %>
 <div class="link_buttons">

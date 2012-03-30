@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout "application", :except => [:show, :edit]
+  layout "application", :except => [:show]
   before_filter :require_user, :recent_items
   filter_access_to :all
 
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+        format.html { redirect_to(users_path, :notice => 'User was successfully updated.') }
         format.xml { head :ok }
       else
         format.html { render :action => "edit" }
@@ -100,7 +100,6 @@ class UsersController < ApplicationController
 
   def change_password
     @user = current_user
-
   end
 
   def password_change
@@ -149,8 +148,18 @@ class UsersController < ApplicationController
       format.xml { head :ok }
     end
   end
+  def approve
+    @user = User.find(params[:id])
+    @user.update_attribute('status', @user.status ? false : true)
+    respond_to do |format|
+      format.js
+    end
+  end
+  def reset
 
-  ###################################################
+  end
+
+    ###################################################
   private
   def recent_items
     @recent = User.recent

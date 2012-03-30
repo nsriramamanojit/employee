@@ -662,14 +662,11 @@ span.space {
     padding: 0 36px 30px 0;
     color: #333333;
     font-weight: normal;
-    text-align: left;
+    text-align: center;
     margin-bottom: 20px;
     position: relative;
 }
-.copyright_text div {
-    position: absolute;
-    left: 35px;
-}
+
 .copyright_text a {
     color: #333333;
     font-weight: normal;
@@ -692,6 +689,7 @@ span.space {
     font-weight: normal;
     text-decoration: underline;
 }
+
 
 .table_main {
     background-color: #e5eaef;

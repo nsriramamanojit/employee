@@ -19,6 +19,26 @@
           <td><%= @user.name %></td>
         </tr>
         <tr>
+          <th width="20%">Father Name</th>
+          <td><%= @user.father_name %></td>
+        </tr>
+        <tr>
+          <th width="20%">Date of Birth</th>
+          <td><%= @user.dob.strftime("%d-%b-%Y") %></td>
+        </tr>
+        <tr>
+          <th width="20%">Address</th>
+          <td><%= @user.address1 + @user.address2 %></td>
+        </tr>
+        <tr>
+          <th width="20%">Place</th>
+          <td><%= @user.place %></td>
+        </tr>
+        <tr>
+          <th width="20%">PIN</th>
+          <td><%= @user.pin %></td>
+        </tr>
+        <tr>
           <th width="20%">Mobile</th>
           <td><%= @user.mobile_number %></td>
         </tr>
@@ -36,5 +56,4 @@
   <br/>
   <%= link_to content_tag(:span, 'Update Profile'), update_profile_user_path(current_user), :class => 'btn-blue' %>
   <%= link_to content_tag(:span, 'Change Password'), change_password_user_path(current_user), :class => 'btn-blue' %>
-
 </div>

@@ -5,7 +5,7 @@ class ReportsController < ApplicationController
 
   def index
     @reports = Report.paginate(:page => page, :per_page => per_page) if has_any_role?(:admin, :manager)
-    @reports = Report.where(:user_id => current_user.id).paginate(:page => page, :per_page => per_page) if has_role?(:employee)
+    @reports = Report.where(:user_id => current_user.id).paginate(:page => page, :per_page => per_page).order("date DESC") if has_role?(:employee)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -84,6 +84,5 @@ class ReportsController < ApplicationController
   end
   def date_report
     @reports = Report.where(:date => params[:id].to_date).paginate(:page => page, :per_page => per_page)
-
   end
 end

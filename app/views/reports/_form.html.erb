@@ -6,7 +6,7 @@
   <%= simple_form_for(@report, :validate => true) do |f| %>
       <fieldset>
         <%= f.input :date, :as => :string, :input_html => {:id => 'date_picker',:value=>Time.now.strftime('%d-%m-%Y')},:label => 'Select Date' %>
-        <%= f.input :report, :placeholder=>"Enter EOD Report Summary",:input_html => { :cols => 50, :rows => 3 },:label=>"Enter EOD Report"%>
+        <%= f.input :report, :placeholder=>"EOD Report Summary",:input_html => { :cols => 50, :rows => 3 },:label=>"Enter EOD Report"%>
         <%= f.input :user_id,:as=>:hidden,:input_html=>{:value=>current_user.id} %>
 
         <%= f.submit 'Submit Report', :disable_with=>'Please wait...' %>
