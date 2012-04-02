@@ -100,5 +100,24 @@ module ApplicationHelper
     content << "</div>"
     content.html_safe
   end
+  def get_list_members(records)
+    content = ""
+    submitted_users = Array.new
+    i = 1
+    for record in records
+      #content << "#{i}. " + record.user.name + "<br/>"
+      submitted_users << record.user.id
+      i +=1
+    end
+    #content << "<br />"
+    users = User.where(["id NOT IN (?)", submitted_users])
+    j = 1
+    for user in users
+      content << "#{j}. " + user.name + "<br/>"
+      j +=1
+    end
+    content.html_safe
+  end
+
 
 end

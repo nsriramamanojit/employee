@@ -24,7 +24,7 @@
             <td><%= i %></td>
             <td><%= date.strftime("%d-%b-%Y")%></td>
             <td><%= link_to records.size, "#",:class => 'bold_text tipTipRight',:title => get_list_users(records) %></td>
-            <td><%= link_to (User.employee_users.size - records.size), "#",:class => 'bold_text tipTipRight'%></td>
+            <td><%= link_to (User.employee_users.size - records.size), "#",:class => 'bold_text tipTipRight',:title => get_list_members(records)%></td>
             <td><%= link_to "View Reports", date_report_report_path(date),:class => "usuallink bold_text" %></td>
           </tr>
           <% i = i + 1 %>
