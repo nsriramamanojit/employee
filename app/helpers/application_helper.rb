@@ -110,7 +110,7 @@ module ApplicationHelper
       i +=1
     end
     #content << "<br />"
-    users = User.where(["id NOT IN (?)", submitted_users])
+    users = User.employee_users.where(["users.id NOT IN (?)", submitted_users])
     j = 1
     for user in users
       content << "#{j}. " + user.name + "<br/>"
