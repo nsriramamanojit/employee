@@ -24,11 +24,11 @@
         </tr>
         <tr>
           <th width="20%">Date of Birth</th>
-          <td><%= @user.dob.strftime("%d-%b-%Y") %></td>
+          <td><%= @user.dob? ? @user.dob.strftime("%d-%b-%Y") : 'N.A' %></td>
         </tr>
         <tr>
           <th width="20%">Address</th>
-          <td><%= @user.address1 + @user.address2 %></td>
+          <td><%= @user.address1 %></td>
         </tr>
         <tr>
           <th width="20%">Place</th>

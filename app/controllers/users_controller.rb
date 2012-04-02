@@ -156,6 +156,16 @@ class UsersController < ApplicationController
     end
   end
   def reset
+    @user = User.find(params[:id])
+    @user.password = @user.email
+
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to(users_path, :notice => 'User password is Reset.') }
+      else
+        format.html { redirect_to(users_path, :error => 'User password is Not Reset.') }
+      end
+    end
 
   end
 
