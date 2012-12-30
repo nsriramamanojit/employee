@@ -20,7 +20,7 @@ session = User.create do |u|
   u.mobile_number=9386849976
   u.district_id =23
   u.state_id = 1
-  Assignment.create(:user_id => 2, :role_id => 3, :created_at => Time.now, :updated_at => Time.now)
+  Assignment.create(:user_id => 2, :role_id => 2, :created_at => Time.now, :updated_at => Time.now)
 end
 session.save
 ##############States###############

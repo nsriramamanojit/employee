@@ -14,7 +14,7 @@
     <%= render :partial=>'common/flash_message' %>
     <%= form_for @user_session, :url =>{:action => "create"} do |f| %>
         <div class="title">
-          NPR40 Downloads
+          NPR40 Application Downloads
         </div>
         <div class="section">
           <div class="label">
