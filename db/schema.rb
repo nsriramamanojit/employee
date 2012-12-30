@@ -11,13 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120327052640) do
+ActiveRecord::Schema.define(:version => 20121230081547) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
     t.integer  "role_id"
     t.integer  "created_by"
     t.integer  "updated_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name",                          :null => false
+    t.string   "description"
+    t.boolean  "status",      :default => true
+    t.integer  "created_by"
+    t.integer  "modified_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,6 +40,22 @@ ActiveRecord::Schema.define(:version => 20120327052640) do
     t.integer  "reference_number"
     t.string   "reference_name"
     t.boolean  "status",           :default => true
+    t.integer  "created_by"
+    t.integer  "modified_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "downloads", :force => true do |t|
+    t.string   "name",                                      :null => false
+    t.string   "description"
+    t.string   "url"
+    t.integer  "category_id",                               :null => false
+    t.boolean  "status",                  :default => true
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
     t.integer  "created_by"
     t.integer  "modified_by"
     t.datetime "created_at"

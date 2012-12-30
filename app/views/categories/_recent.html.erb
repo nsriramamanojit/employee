@@ -1,0 +1,28 @@
+<div class="recent_items">
+  <div class="margin">
+    <h3>Recent Categories</h3>
+    <% if @recent.blank? %>
+        No Categories Added Yet...
+    <% else %>
+        <% for category in @recent %>
+            <div id="margin">
+              <div class="left">&nbsp;</div>
+              <div class="right">&nbsp;</div>
+              <div class="left-to-right">
+                <div class="pen">&nbsp;</div>
+                <div class="text">
+                  <%= link_to category.name, category_path(category), :class=>'usuallink tipTipRight',:rel=>"facebox",:title => "View Details" %>
+                  <div style="margin: 8px 0px;">&nbsp;</div>
+                </div>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
+    <div class="see_all">
+      <a href="/categories">
+        View all Categories
+        <img hspace="2" border="0" alt="" src="/images/blue^.gif">
+      </a>
+    </div>
+  </div>
+</div>

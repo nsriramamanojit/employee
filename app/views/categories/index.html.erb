@@ -1,0 +1,46 @@
+<% title "VEDAVAAG | Categories" %>
+<h3>VEDAVAAG | Categories | Manage Categories</h3>
+<% content_for :left_panel do %>
+    <td valign="top" width="250"> <%= render 'common/search' %>
+      <%= render 'recent' %> </td>
+<% end %>
+<div class="help_text">
+  Area for managing Categories. <br/>
+  Along with creating, managing  Categories for Application.
+</div>
+<div class="link_buttons">
+  <%= link_to content_tag(:span, 'New Category'), new_category_path, :class => 'btn-blue' if permitted_to? :create %>
+  <%= link_to content_tag(:span, 'Home'), homes_url, :class => 'btn-yellow' %>
+</div>
+
+<% if @categories.blank? %>
+    <div class="error_msg">
+      OOPS!.. No Categories are Found in the System..!
+    </div>
+<% else %>
+    <table class="tablesorter">
+      <thead>
+      <tr>
+        <th>SNo</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% i=1 %>
+      <% @categories.each do |category| %>
+          <tr>
+            <td><%= i %></td>
+            <td><%= highlight(category.name,params[:search]) %></td>
+            <td><%= category.description %></td>
+            <td>
+              <%= link_for_show_pop(category) %>
+            </td>
+          </tr>
+          <% i = i + 1 %>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>
+

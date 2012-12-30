@@ -1,4 +1,8 @@
 Employee::Application.routes.draw do
+  resources :categories
+
+  resources :downloads
+
   resources :reports  do
     get :date_report, :on=>:member
   end
